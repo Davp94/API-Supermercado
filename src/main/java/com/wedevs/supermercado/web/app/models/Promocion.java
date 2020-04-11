@@ -1,15 +1,19 @@
 package com.wedevs.supermercado.web.app.models;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="promocion")
 public class Promocion {
 	
 	@Id
-	private int id_Promocion;
+	private int idPromocion;
 	
 	private Date fecha_inicio;
 	
@@ -18,17 +22,25 @@ public class Promocion {
 	private double descuento;
 	
 	private Date createAt;
+	
+	/*
+	 * Cardinalidad muchos a muchos 1ra forma
+	@ManyToMany(mappedBy="promociones")
+	private List<Producto> productos;
+	 */
 
-	public int getId_Promocion() {
-		return id_Promocion;
-	}
-
-	public void setId_Promocion(int id_Promocion) {
-		this.id_Promocion = id_Promocion;
-	}
+	
 
 	public Date getFecha_inicio() {
 		return fecha_inicio;
+	}
+
+	public int getIdPromocion() {
+		return idPromocion;
+	}
+
+	public void setIdPromocion(int idPromocion) {
+		this.idPromocion = idPromocion;
 	}
 
 	public void setFecha_inicio(Date fecha_inicio) {
