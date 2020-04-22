@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 
 @Entity
 public class Factura {
@@ -16,6 +17,11 @@ public class Factura {
 	private Date hora;
 	
 	private Date createAt;
+	
+	@PrePersist
+	public void Prepersist() {
+		createAt= new Date();
+	}
 
 	public String getIdFactura() {
 		return idFactura;

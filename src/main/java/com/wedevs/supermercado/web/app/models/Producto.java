@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 @Entity
@@ -27,6 +28,11 @@ public class Producto {
 	private Date createAt;
 	
 	private String number;
+	
+	@PrePersist
+	public void Prepersist() {
+		createAt= new Date();
+	}
 	
 	/*
 	 * Cardinalidad muchos a muchos 1ra forma

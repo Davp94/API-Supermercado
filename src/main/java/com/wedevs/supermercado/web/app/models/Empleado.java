@@ -1,28 +1,34 @@
 package com.wedevs.supermercado.web.app.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-public class Empleado {
+public class Empleado extends Persona implements Serializable{
 	
-	@Id
-	private String idEmpleado;
-	
+
+	private static final long serialVersionUID = 1L;
+
+
+	@Temporal(TemporalType.DATE)
 	private Date fechaIngreso;
+	
 	
 	private String descripcion;
 	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createAt;
-
-	public String getIdEmpleado() {
-		return idEmpleado;
-	}
-
-	public void setIdEmpleado(String idEmpleado) {
-		this.idEmpleado = idEmpleado;
+	
+	@PrePersist
+	public void Prepersist() {
+		createAt= new Date();
 	}
 
 	public Date getFechaIngreso() {

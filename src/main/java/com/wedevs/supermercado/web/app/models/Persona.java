@@ -1,33 +1,66 @@
 package com.wedevs.supermercado.web.app.models;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
-public class Persona {
-	
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Persona implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
+	@Column(unique = true, nullable = true)
 	private String CI;
 	
+	@NotEmpty
 	private String nombre;
 	
+	@NotEmpty
 	private String apellido1;
 	
+	@NotEmpty
 	private String apellido2;
 	
+	@NotEmpty
 	private String DireccionNroPuerta;
 	
+	@NotEmpty
 	private String DireccionCalle;
 	
+	@Size(min=4, max=12)
 	private String DireccionCiudad;
 	
 	private String foto;
 	
+	@Temporal(value = TemporalType.TIMESTAMP)
 	private Date createAt;
 	
 	private int telefono;
+	
+	@OneToMany(mappedBy = "persona")
+	private List<Correo> correos;
+	
+	@PrePersist
+	public void Prepersist() {
+		createAt= new Date();
+	}
 
 	public String getCI() {
 		return CI;

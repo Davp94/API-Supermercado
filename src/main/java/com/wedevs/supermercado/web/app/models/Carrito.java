@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 
 @Entity
 public class Carrito {
@@ -16,6 +17,11 @@ public class Carrito {
 	private String descripcion;
 	
 	private Date createAt;
+	
+	@PrePersist
+	public void Prepersist() {
+		createAt= new Date();
+	}
 
 	public int getIdCarrito() {
 		return idCarrito;

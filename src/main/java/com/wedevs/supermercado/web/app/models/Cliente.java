@@ -1,27 +1,30 @@
 package com.wedevs.supermercado.web.app.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 
 @Entity
-public class Cliente {
+public class Cliente extends Persona implements Serializable{
 	
-	@Id
-	private String idPersona;
+
+	private static final long serialVersionUID = 1L;
+
+
 	
 	private int nit;
 	
 	private Date createAt;
-
-	public String getIdPersona() {
-		return idPersona;
+	
+	@PrePersist
+	public void Prepersist() {
+		createAt= new Date();
 	}
 
-	public void setIdPersona(String idPersona) {
-		this.idPersona = idPersona;
-	}
 
 	public int getNit() {
 		return nit;

@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +23,11 @@ public class Promocion {
 	private double descuento;
 	
 	private Date createAt;
+	
+	@PrePersist
+	public void Prepersist() {
+		createAt= new Date();
+	}
 	
 	/*
 	 * Cardinalidad muchos a muchos 1ra forma

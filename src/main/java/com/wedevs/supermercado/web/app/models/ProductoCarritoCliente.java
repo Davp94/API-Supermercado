@@ -10,8 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 
 @Entity
-public class ProductoFacturaCliente {
-	
+public class ProductoCarritoCliente {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -20,7 +20,7 @@ public class ProductoFacturaCliente {
 	private  Producto producto;
 	
 	@ManyToOne
-	private Factura factura;
+	private Carrito carrito;
 	
 	@ManyToOne
 	private Cliente cliente;
@@ -48,12 +48,12 @@ public class ProductoFacturaCliente {
 		this.producto = producto;
 	}
 
-	public Factura getFactura() {
-		return factura;
+	public Carrito getCarrito() {
+		return carrito;
 	}
 
-	public void setFactura(Factura factura) {
-		this.factura = factura;
+	public void setCarrito(Carrito carrito) {
+		this.carrito = carrito;
 	}
 
 	public Cliente getCliente() {
@@ -73,5 +73,4 @@ public class ProductoFacturaCliente {
 	}
 	
 	
-
 }
