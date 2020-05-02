@@ -10,9 +10,8 @@ import org.springframework.stereotype.Service;
 import com.wedevs.supermercado.web.app.dao.IPersonaDao;
 import com.wedevs.supermercado.web.app.models.Persona;
 
-@Service("personaServiceConJpa")
-@Primary
-public class PersonaServiceImpl implements IPersonaService{
+@Service("personaServiceConJdbc")
+public class PersonaServiceImplEnJDBC implements IPersonaService{
 
 	//Inyeccion de dependencias en atributo
 	@Autowired

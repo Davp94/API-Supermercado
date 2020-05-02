@@ -7,5 +7,4 @@ import com.wedevs.supermercado.web.app.models.Persona;
 public interface IPersonaDao extends CrudRepository<Persona, String>{
 	
 	
-
 }

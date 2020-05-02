@@ -5,6 +5,8 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Factura {
@@ -12,8 +14,10 @@ public class Factura {
 	@Id
 	private String idFactura;
 	
+	@Temporal(TemporalType.DATE)
 	private Date fecha;
 	
+	@Temporal(TemporalType.TIME)
 	private Date hora;
 	
 	private Date createAt;
