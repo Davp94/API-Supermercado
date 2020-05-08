@@ -1,9 +1,12 @@
 package com.wedevs.supermercado.web.app.models;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
@@ -11,9 +14,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="promocion")
-public class Promocion {
+public class Promocion implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPromocion;
 	
 	private Date fecha_inicio;

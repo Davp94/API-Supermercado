@@ -20,7 +20,6 @@ public class Empleado extends Persona implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date fechaIngreso;
 	
-	
 	private String descripcion;
 	
 	@Temporal(TemporalType.TIMESTAMP)

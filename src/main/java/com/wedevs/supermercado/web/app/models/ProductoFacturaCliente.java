@@ -1,5 +1,6 @@
 package com.wedevs.supermercado.web.app.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -10,8 +11,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 
 @Entity
-public class ProductoFacturaCliente {
+public class ProductoFacturaCliente implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;

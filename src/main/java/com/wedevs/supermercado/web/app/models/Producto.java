@@ -1,21 +1,21 @@
 package com.wedevs.supermercado.web.app.models;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="producto")
-public class Producto {
+public class Producto implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private String idProducto;
 	
@@ -27,7 +27,7 @@ public class Producto {
 	
 	private Date createAt;
 	
-	private String number;
+	private String nombre;
 	
 	@PrePersist
 	public void Prepersist() {
@@ -84,13 +84,15 @@ public class Producto {
 		this.createAt = createAt;
 	}
 
-	public String getNumber() {
-		return number;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setNumber(String number) {
-		this.number = number;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
+
+	
 	
 	
 

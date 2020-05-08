@@ -1,5 +1,6 @@
 package com.wedevs.supermercado.web.app.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -9,8 +10,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Factura {
+public class Factura implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	private String idFactura;
 	
