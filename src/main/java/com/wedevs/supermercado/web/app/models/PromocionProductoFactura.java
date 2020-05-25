@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 
 @Entity
-public class PromocionProducto implements Serializable{
+public class PromocionProductoFactura implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 
@@ -29,7 +29,12 @@ public class PromocionProducto implements Serializable{
 	@JoinColumn(name = "id_producto")
 	private Producto idProducto;
 	
+	@ManyToOne
+	private Factura idFactura;
+	
 	private int stockPromocion;
+	
+	private double precio;
 	
 	private Date createAt;
 
@@ -69,6 +74,31 @@ public class PromocionProducto implements Serializable{
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Factura getIdFactura() {
+		return idFactura;
+	}
+
+	public void setIdFactura(Factura idFactura) {
+		this.idFactura = idFactura;
+	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+	
 	
 	
 	

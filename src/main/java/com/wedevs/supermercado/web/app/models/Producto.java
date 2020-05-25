@@ -7,10 +7,12 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 
-@Entity
+@Entity(name="producto")
 @Table(name="producto")
 public class Producto implements Serializable{
 	
@@ -28,6 +30,10 @@ public class Producto implements Serializable{
 	private Date createAt;
 	
 	private String nombre;
+	
+	@ManyToOne
+	@JoinColumn(name="lote_id")
+	private Lote lote;
 	
 	@PrePersist
 	public void Prepersist() {

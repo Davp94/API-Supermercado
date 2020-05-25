@@ -28,6 +28,8 @@ public class ProductoCarritoCliente implements Serializable{
 	@ManyToOne
 	private Cliente cliente;
 	
+	private String estado;
+	
 	private Date createAt;
 	
 	@PrePersist
@@ -73,6 +75,14 @@ public class ProductoCarritoCliente implements Serializable{
 
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 	
 	
