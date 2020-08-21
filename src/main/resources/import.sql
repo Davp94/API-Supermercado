@@ -29,23 +29,34 @@ INSERT INTO empleado(descripcion, fecha_ingreso,ci)VALUES('llega tarde','2020-05
 INSERT INTO empleado(descripcion, fecha_ingreso,ci)VALUES('se duerme','2020-02-08','1234');
 INSERT INTO empleado(descripcion, fecha_ingreso,ci)VALUES('compra tucus','2020-02-08','5678');
 --insert into factura
-INSERT INTO factura(id_factura, create_at, fecha, hora) VALUES ('F001', '2020-05-01','2020-05-01','21:36:00'); 
-INSERT INTO factura(id_factura, create_at, fecha, hora) VALUES ('F002', '2020-05-01','2020-05-01','21:36:00'); 
-INSERT INTO factura(id_factura, create_at, fecha, hora) VALUES ('F003', '2020-05-01','2020-05-01','21:36:00'); 
-INSERT INTO factura(id_factura, create_at, fecha, hora) VALUES ('F004', '2020-05-07','2020-05-07','21:36:00'); 
-INSERT INTO factura(id_factura, create_at, fecha, hora) VALUES ('F005', '2020-05-07','2020-05-07','21:36:00'); 
+INSERT INTO factura(id_factura, create_at, fecha, hora) VALUES ('F001', '2020-05-01','2020-05-01','21:36:00');
+INSERT INTO factura(id_factura, create_at, fecha, hora) VALUES ('F002', '2020-05-01','2020-05-01','21:36:00');
+INSERT INTO factura(id_factura, create_at, fecha, hora) VALUES ('F003', '2020-05-01','2020-05-01','21:36:00');
+INSERT INTO factura(id_factura, create_at, fecha, hora) VALUES ('F004', '2020-05-07','2020-05-07','21:36:00');
+INSERT INTO factura(id_factura, create_at, fecha, hora) VALUES ('F005', '2020-05-07','2020-05-07','21:36:00');
+--insert into lote
+INSERT INTO lote (id_lote, fecha_arribo, fecha_vencimiento, senasag) VALUES (1, '2020-06-03', '2020-08-03', '12345sng');
+INSERT INTO lote (id_lote, fecha_arribo, fecha_vencimiento, senasag) VALUES (2, '2020-06-03', '2020-08-03', '13579sng');
+INSERT INTO lote (id_lote, fecha_arribo, fecha_vencimiento, senasag) VALUES (3, '2020-06-03', '2020-09-03', '24680sng');
+INSERT INTO lote (id_lote, fecha_arribo, fecha_vencimiento, senasag) VALUES (4, '2020-06-03', '2020-10-03', '113355sng');
+INSERT INTO lote (id_lote, fecha_arribo, fecha_vencimiento, senasag) VALUES (5, '2020-06-03', '2020-10-03', '224466sng');
+INSERT INTO lote (id_lote, fecha_arribo, fecha_vencimiento, senasag) VALUES (6, '2020-06-03', '2020-11-03', '111333sng');
 --insert into producto
-INSERT INTO producto(id_producto,create_at,descripcion, nombre, precio, stock) VALUES ('P001','2020-05-07','nacional','CokaQuina',7.5,100);
-INSERT INTO producto(id_producto,create_at,descripcion, nombre, precio, stock) VALUES ('P002','2020-05-07','nacional','Guarana',7,80);
-INSERT INTO producto(id_producto,create_at,descripcion, nombre, precio, stock) VALUES ('P003','2020-05-07','nacional','Agua Viscachani',5,200);
-INSERT INTO producto(id_producto,create_at,descripcion, nombre, precio, stock) VALUES ('P004','2020-05-07','importado','heineken',15.4,50);
-INSERT INTO producto(id_producto,create_at,descripcion, nombre, precio, stock) VALUES ('P005','2020-05-07','importado','Inca Cola',8.5,100);
-INSERT INTO producto(id_producto,create_at,descripcion, nombre, precio, stock) VALUES ('P006','2020-05-07','importado','Welchs',12.3,20);
+INSERT INTO producto(id_producto,create_at,descripcion, nombre, precio, stock, lote_id) VALUES ('P001','2020-05-07','nacional','CokaQuina',7.5,100,1);
+INSERT INTO producto(id_producto,create_at,descripcion, nombre, precio, stock, lote_id) VALUES ('P002','2020-05-07','nacional','Guarana',7,80,2);
+INSERT INTO producto(id_producto,create_at,descripcion, nombre, precio, stock, lote_id) VALUES ('P003','2020-05-07','nacional','Agua Viscachani',5,200,3);
+INSERT INTO producto(id_producto,create_at,descripcion, nombre, precio, stock, lote_id) VALUES ('P004','2020-05-07','importado','heineken',15.4,50,4);
+INSERT INTO producto(id_producto,create_at,descripcion, nombre, precio, stock, lote_id) VALUES ('P005','2020-05-07','importado','Inca Cola',8.5,100,5);
+INSERT INTO producto(id_producto,create_at,descripcion, nombre, precio, stock, lote_id) VALUES ('P006','2020-05-07','importado','Welchs',12.3,20,6);
 
 --insert into promocion
 INSERT INTO promocion(id_promocion,create_at,descuento, fecha_fin, fecha_inicio)VALUES(1,'2020-05-08',4,'2020-05-14','2020-05-08');
 INSERT INTO promocion(id_promocion,create_at,descuento, fecha_fin, fecha_inicio)VALUES(2,'2020-05-08',7,'2020-05-14','2020-05-08');
---insert promocion producto
-INSERT INTO promocion_producto(id,create_at, stock_promocion, id_producto, id_promocion)VALUES(1,'2020-05-08',5,'P001',1);
-INSERT INTO promocion_producto(id,create_at, stock_promocion, id_producto, id_promocion)VALUES(2,'2020-05-08',10,'P002',2);
-INSERT INTO promocion_producto(id,create_at, stock_promocion, id_producto, id_promocion)VALUES(3,'2020-05-08',5,'P003',1);
+--insert promocion producto factura
+INSERT INTO promocion_producto_factura(id,create_at, precio, stock_promocion, id_cliente, id_factura, id_producto, id_promocion)VALUES(1,'2020-05-08',21, 5,'123','F001', 'P001',1);
+INSERT INTO promocion_producto_factura(id,create_at, precio, stock_promocion, id_cliente, id_factura, id_producto, id_promocion)VALUES(2,'2020-05-08',21, 10,'456','F002', 'P002',2);
+INSERT INTO promocion_producto_factura(id,create_at, precio, stock_promocion, id_cliente, id_factura, id_producto, id_promocion)VALUES(3,'2020-05-08',12, 5,'321','F003', 'P003',1);
+--insert producto factura cliente
+INSERT INTO producto_factura_cliente(id, cantidad, create_at, precio, cliente_ci, factura_id_factura, producto_id_producto)VALUES(1, 2, '2020-06-03',15,'123', 'F001', 'P001');
+INSERT INTO producto_factura_cliente(id, cantidad, create_at, precio, cliente_ci, factura_id_factura, producto_id_producto)VALUES(2, 4, '2020-06-03',31.2,'456', 'F002', 'P002');
+INSERT INTO producto_factura_cliente(id, cantidad, create_at, precio, cliente_ci, factura_id_factura, producto_id_producto)VALUES(3, 1, '2020-06-03',5,'321', 'F003', 'P003');

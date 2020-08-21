@@ -9,6 +9,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class Factura implements Serializable{
 	
@@ -24,6 +26,8 @@ public class Factura implements Serializable{
 	private Date hora;
 	
 	private Date createAt;
+	
+	
 	
 	@PrePersist
 	public void Prepersist() {

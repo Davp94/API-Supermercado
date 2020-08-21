@@ -30,7 +30,12 @@ public class PromocionProductoFactura implements Serializable{
 	private Producto idProducto;
 	
 	@ManyToOne
+	@JoinColumn(name = "id_factura")
 	private Factura idFactura;
+	
+	@ManyToOne 
+	@JoinColumn(name = "id_cliente")
+	private Cliente cliente;
 	
 	private int stockPromocion;
 	
